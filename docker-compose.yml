@@ -1,0 +1,12 @@
+consul:
+    image: consul
+    ports:
+        - "8500:8500"
+    environment:
+        CONSUL_LOCAL_CONFIG: >
+            { "log_level": "info" }
+
+app:
+    build: .
+    links:
+        - consul
