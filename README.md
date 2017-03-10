@@ -2,6 +2,9 @@
 
 A Consul environment to show how to use consul for configuring projects
 
+## Requirements
+
+You only need to install `docker-compose` (https://docs.docker.com/compose/install/)
 
 ## How to set it up
 
