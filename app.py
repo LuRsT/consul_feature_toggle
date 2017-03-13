@@ -11,24 +11,13 @@ class ConsulKeyNotFound(Exception):
 
 
 def get(key):
-    kv_client = _get_kv_client()
-    _, value = kv_client.get(key, index=None)
+    client = consul.Consul(host='consul')
+    _, value = client.kv.get(key, index=None)
     if not value:
         raise ConsulKeyNotFound()
     else:
         value = json.loads(value['Value'].decode('utf-8'))
     return value
-
-
-def put(key, value):
-    kv_client = _get_kv_client()
-    value = json.dumps(value)
-    kv_client.put(key, value)
-
-
-def _get_kv_client():
-    client = consul.Consul(host='consul')
-    return client.kv
 
 
 def main():
