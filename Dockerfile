@@ -1,8 +1,8 @@
-FROM docker.made.com/ops/alpine-s6:3.4-1
+FROM alpine:3.5
 
 COPY requirements.txt ./
 
-RUN apk --update upgrade && apk add python3 libpq xmlsec@made
+RUN apk --update upgrade && apk add python3 libpq
 
 RUN pip3 install -r requirements.txt
 
